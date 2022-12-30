@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "head.html" %}
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<section class="container d-flex flex-column min-vh-100 bg-light mw-500">
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5 class="font-weight-bold mb-3 title-text">Memproses Dataset {{ prs }}</h5>
+            <hr>
+            <img src="{{ url_for('vidfeed_dataset', nbr=prs) }}" width="100%" class="img-thumbnail">
+        </div>
+    </div>
+
+    <br>
+    <div class="row mt-100 pb-4">
+        <div class="col-12">
+            <a class="btn btn-primary w-100" href="{{ url_for('train_classifier', nbr=prs) }}">Training</a>
+        </div>
+    </div>
+
+    {% include "menubar.html" %}
+</section>
+
+</body>
+</html>

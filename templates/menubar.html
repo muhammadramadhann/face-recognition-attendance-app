@@ -1,0 +1,40 @@
+<div class="mt-auto row align-items-center px-4 py-2 shadow-custom position-sticky b-0 bg-white">
+    <div class="col-12">
+        <div class="row justify-content-around display-text">
+            <a href="/" class="nav-link text-black">
+                <div class="row flex-column justify-content-center align-items-center">
+                    <img src="{{ url_for('static', filename='img/home.svg') }}" alt="home">
+                    <span class="mt-1 font-weight-bold">
+                        Home
+                    </span>
+                </div>
+            </a>
+            <a href="/fr_page" class="nav-link text-black">
+                <div class="row flex-column justify-content-center align-items-center">
+                    <img src="{{ url_for('static', filename='img/camera.svg') }}" alt="camera">
+                    <span class="mt-1 font-weight-bold">
+                        Absence
+                    </span>
+                </div>
+            </a>
+            <a href="/addprsn" class="nav-link text-black">
+                <div class="row flex-column justify-content-center align-items-center">
+                    <img src="{{ url_for('static', filename='img/add.svg') }}" alt="add">
+                    <span class="mt-1 font-weight-bold">
+                        Add Face
+                    </span>
+                </div>
+            </a>
+            <a href="" class="nav-link text-black">
+                <div class="row flex-column justify-content-center align-items-center">
+                    <img src="{{ url_for('static', filename='img/help.svg') }}" alt="help">
+                    <span class="mt-1 font-weight-bold">
+                        Help
+                    </span>
+                </div>
+            </a>
+            <!-- <a href="/addprsn" type="button" class="btn btn-success"><b>Tambah Data</b></a>
+            <a href="/fr_page" type="button" class="btn btn-info"><b>Face Recognition</b></a> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "head.html" %}
+</head>
+<body >
+ 
+{% include "navbar.html" %}
+ 
+<section class="container d-flex flex-column min-vh-100 bg-light mw-500">
+    <div class="row mt-4">
+        <div class="col-12">
+            <img src="{{ url_for('video_feed') }}" width="100%" class="img-thumbnail">
+        </div>
+        <div class="col-12">
+            <h5 class="font-weight-bold my-3 title-text">Data Absensi</h5>
+            <div class="table-responsive">
+                <table class="table display-text">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nama</th>
+                            <th>Kelas</th>
+                            <th>Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scandata">
+     
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="row mt-100 pb-4">
+        <div class="col-12">
+            <a class="btn btn-primary w-100" href="/">Kembali ke Home</a>
+        </div>
+    </div>
+
+    {% include "menubar.html" %}
+</section>
+ 
+<script type="text/javascript">
+    $(document).ready(function() {
+        let lastcnt = 0;
+        let cnt;
+        chkNewScan();
+ 
+        function chkNewScan() {
+            countTodayScan();
+            setTimeout(chkNewScan, 1000);
+        }
+ 
+        function countTodayScan() {
+            $.ajax({
+                url: '/countTodayScan',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    cnt = data.rowcount;
+                    if (cnt > lastcnt) {
+                        reloadTable();
+                    }
+ 
+                    lastcnt = cnt;
+                },
+                error: function(result){
+                    console.log('no result!')
+                }
+            })
+        }
+ 
+        function reloadTable() {
+            $.ajax({
+                url: '/loadData',
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    var tr = $("#scandata");
+                    tr.empty();
+ 
+                    $.each(response, function(index, item) {
+                        if (item.length > 0) {
+                            for (let i = 0; i < item.length; i++) {
+                                tr.append('<tr>'+
+                                                '<td>'+item[i][1]+'</td>'+
+                                                '<td>'+item[i][2]+'</td>'+
+                                                '<td>'+item[i][3]+'</td>'+
+                                                '<td>'+item[i][4]+'</td>'+
+                                           '</tr>');
+                            }
+                        }
+                    });
+                },
+                error: function(result){
+                    console.log('no result!')
+                }
+            });
+        }
+    });
+</script>
+ 
+</body>
+</html>

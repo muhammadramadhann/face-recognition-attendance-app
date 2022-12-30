@@ -12,16 +12,16 @@ app.secret_key = 'AHjkaIllq!@$%^&*()'
 mysql = MySQL()
 
 # local
-# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-# app.config['MYSQL_DATABASE_USER'] = 'root'
-# app.config['MYSQL_DATABASE_PASSWORD'] = ''
-# app.config['MYSQL_DATABASE_DB'] = 'flask_db'
+app.config['MYSQL_DATABASE_HOST'] = 'your_database_host'
+app.config['MYSQL_DATABASE_USER'] = 'your_database_user'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'your_database_password'
+app.config['MYSQL_DATABASE_DB'] = 'your_database_name'
 
 # production
-app.config['MYSQL_DATABASE_HOST'] = 'us-cdbr-east-06.cleardb.net'
-app.config['MYSQL_DATABASE_USER'] = 'b3eaea2b897d4c'
-app.config['MYSQL_DATABASE_PASSWORD'] = '7001b996'
-app.config['MYSQL_DATABASE_DB'] = 'heroku_2dc97cf66af4fd7'
+# app.config['MYSQL_DATABASE_HOST'] = ''
+# app.config['MYSQL_DATABASE_USER'] = ''
+# app.config['MYSQL_DATABASE_PASSWORD'] = ''
+# app.config['MYSQL_DATABASE_DB'] = ''
 
 mysql.init_app(app)
 
